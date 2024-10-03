@@ -17,18 +17,18 @@ public class Main {
             String vpc = bufferedReader.readLine();
 
             Stack<Character> stack = new Stack<>(); // 각 테스트 케이스마다 새로운 스택 생성
-            boolean isBalanced = true;
+            boolean isTrue = true;
 
             for (int j = 0; j < vpc.length(); j++) {
-                char currentChar = vpc.charAt(j);
+                char currentCh = vpc.charAt(j);
 
-                if (currentChar == '(') {
-                    stack.push(currentChar);  // '('는 스택에 추가
-                } else if (currentChar == ')') {
+                if (currentCh == '(') {
+                    stack.push(currentCh);  // '('는 스택에 추가
+                } else if (currentCh == ')') {
                     if (!stack.isEmpty()) {
                         stack.pop();  // 스택에 '('가 있으면 pop
                     } else {
-                        isBalanced = false;  // 스택이 비어 있는데 ')'가 나오면 불균형
+                        isTrue= false;  // 스택이 비어 있는데 ')'가 나오면 불균형
                         break;
                     }
                 }
@@ -36,11 +36,11 @@ public class Main {
 
             // 스택에 여전히 '('가 남아 있으면 불균형
             if (!stack.isEmpty()) {
-                isBalanced = false;
+                isTrue = false;
             }
 
             // 결과를 StringBuilder에 추가
-            if (isBalanced) {
+            if (isTrue) {
                 result.append("YES\n");
             } else {
                 result.append("NO\n");
@@ -51,3 +51,7 @@ public class Main {
         System.out.print(result.toString());
     }
 }
+
+
+
+
