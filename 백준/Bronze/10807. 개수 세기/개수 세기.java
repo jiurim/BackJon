@@ -1,23 +1,32 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int count =0;
-        int n = sc.nextInt();
+    public static void main(String[] args) throws IOException{
 
-        int [] cnt = new int[n];
-        for (int i = 0; i < n; i++) {
-            cnt[i] = sc.nextInt();
-        }
-        
-        int a = sc.nextInt();
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int i=0;i<cnt.length;i++){
-            if(cnt[i]==a){
-                count++;
+        int num = Integer.parseInt(buffer.readLine());
+        String [] index = buffer.readLine().split(" ");
+        int [] cnt = new int[num];
+        int find = Integer.parseInt(buffer.readLine());
+        int findcnt =0;
+    
+
+        for(int i = 0;i<cnt.length;i++){
+            cnt[i] = Integer.parseInt(index[i]);
+
+            if(cnt[i]==find){
+                findcnt++;
             }
         }
-        System.out.println(count);
+
+
+        System.out.println(findcnt);
+        
+
+        
+
     }
 }
