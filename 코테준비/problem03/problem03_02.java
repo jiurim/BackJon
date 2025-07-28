@@ -1,64 +1,51 @@
 package 코테준비.problem03;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class problem03_02 {
-    public static List<Integer> Solution(int cnt1, int[] input1, int cnt2, int[] input2){
-        List<Integer> answer = new ArrayList<>();
-        
-        int min =0;
-        int max = 0;
-        int[] min_input = {};
-        int[] max_input = {};
+    public static ArrayList<Integer> Solution(int n, int[] a, int m, int[] b){
+        ArrayList<Integer> answer = new ArrayList<>();
 
-        if(cnt1>=cnt2){
-            min = cnt2;
-            max = cnt1;
-            min_input = input2;
-            max_input = input1;
-        }else if(cnt2>cnt1){
-            min = cnt1;
-            max = cnt2;
-            min_input = input1;
-            max_input = input2;
-        }
+        Arrays.sort(a);
+        Arrays.sort(b);
 
-        for(int i=0;i<min;i++){
-            for(int j=0;j<max;j++){
-                if(min_input[i]==max_input[j]){
-                    answer.add(max_input[j]);
-                }
+        int p1 =0, p2=0;
+
+        while(p1<n && p2<m){
+            if(a[p1]==b[p2]){
+                answer.add(a[p1++]);
+                p2++;
+            }
+            else if(a[p1]<b[p2]){
+                p1++;
+            }
+            else{
+                p2++;
             }
         }
-        
-        answer.sort(null);
         return answer;
     }
-    public static void main(String[] args) throws IOException{
+    
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int cnt1 = sc.nextInt();
-        int[] input1 = new int[cnt1];
-        for(int i=0;i<cnt1;i++){
-            input1[i] = sc.nextInt();
+        int N = sc.nextInt();
+        int[] arr1 = new int[N];
+        for(int i = 0; i < N; i++){
+            arr1[i] = sc.nextInt();
         }
-        
 
-        int cnt2= sc.nextInt();
-        int[] input2 = new int[cnt2];
-        for(int i=0;i<cnt2;i++){
-            input2[i] = sc.nextInt();
+        int M = sc.nextInt();
+        int[] arr2 = new int[M];
+        for(int i = 0; i < M; i++){
+            arr2[i] = sc.nextInt();
         }
 
         sc.close();
 
-        for(int x : Solution(cnt1,input1,cnt2,input2)){
+        for(int x : Solution(N,arr1, M,arr2)){
             System.out.print(x+" ");
         }
-        
     }
-    
 }
